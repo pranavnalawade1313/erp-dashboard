@@ -1,4 +1,3 @@
-import React from "react";
 import { UserCircle, Mail, Phone, BadgeCheck } from "lucide-react";
 
 const employees = [

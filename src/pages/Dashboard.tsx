@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
-import React from 'react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
   BarChart, Bar, PieChart, Pie, Cell
 } from 'recharts';
-import { 
-  Home, ShoppingCart, Package, TrendingUp, ShoppingBag, Users, 
-  Truck, UserCircle, FileText, BarChart2, Tag, Bell, Settings, 
-  Calendar, ChevronDown, CheckCircle2, AlertCircle
-} from 'lucide-react';
+import {
+  Home,
+  ShoppingCart,
+  Package,
+  TrendingUp,
+  ShoppingBag,
+  Users,
+  Truck,
+  UserCircle,
+  FileText,
+  BarChart2,
+  Tag,
+  Bell,
+  Settings,
+  Calendar,
+  ChevronDown,
+  AlertCircle,
+} from "lucide-react";
 
 // --- MOCK DATA ---
 const salesData = [

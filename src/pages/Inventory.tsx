@@ -1,132 +1,88 @@
-import React, { useState } from "react";
-import {
-  Search,
-  Plus,
-  Edit,
-  Trash2,
-  Package,
-} from "lucide-react";
-
 export default function Inventory() {
-  const [search, setSearch] = useState("");
-
   const products = [
     {
       id: 1,
-      name: "Aashirvaad Atta",
+      name: "Rice 5kg",
       category: "Grocery",
-      stock: 120,
-      price: 350,
+      price: 450,
+      stock: 50,
+      status: "In Stock",
     },
     {
       id: 2,
-      name: "Fortune Oil",
+      name: "Sugar 1kg",
       category: "Grocery",
-      stock: 85,
-      price: 180,
+      price: 55,
+      stock: 8,
+      status: "Low Stock",
     },
     {
       id: 3,
-      name: "Surf Excel",
-      category: "Home Care",
-      stock: 45,
-      price: 220,
+      name: "Sunflower Oil 1L",
+      category: "Oil",
+      price: 180,
+      stock: 35,
+      status: "In Stock",
     },
     {
       id: 4,
-      name: "Colgate Toothpaste",
-      category: "Personal Care",
-      stock: 60,
-      price: 95,
+      name: "Surf Excel",
+      category: "Cleaning",
+      price: 220,
+      stock: 0,
+      status: "Out of Stock",
     },
     {
       id: 5,
-      name: "Dove Soap",
-      category: "Personal Care",
-      stock: 15,
-      price: 60,
-    },
-    {
-      id: 6,
-      name: "Maggi Noodles",
-      category: "Food",
-      stock: 250,
-      price: 15,
+      name: "Tea Powder",
+      category: "Beverages",
+      price: 140,
+      stock: 18,
+      status: "Low Stock",
     },
   ];
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
-    <div className="p-8 bg-slate-100 min-h-screen">
+    <div className="min-h-screen bg-gray-100 p-8">
 
-      {/* Header */}
-
+      {/* Heading */}
       <div className="flex justify-between items-center mb-8">
-
         <div>
           <h1 className="text-3xl font-bold text-gray-800">
-            Inventory
+            Inventory Management
           </h1>
-
-          <p className="text-gray-500">
-            Manage all products in your store
+          <p className="text-gray-500 mt-1">
+            Manage all your store products.
           </p>
         </div>
 
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
-          <Plus size={18} />
-          Add Product
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg">
+          + Add Product
         </button>
-
       </div>
 
-      {/* Summary Cards */}
+      {/* Cards */}
 
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
-        <div className="bg-white p-5 rounded-xl shadow">
-
-          <Package className="text-blue-600 mb-3" size={35} />
-
+        <div className="bg-white rounded-xl shadow-md p-6">
           <p className="text-gray-500">Total Products</p>
-
-          <h2 className="text-3xl font-bold">
-            {products.length}
-          </h2>
-
+          <h1 className="text-4xl font-bold mt-3">250</h1>
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow">
-
-          <p className="text-gray-500">Low Stock</p>
-
-          <h2 className="text-3xl font-bold text-red-600">
-            {products.filter((p) => p.stock < 20).length}
-          </h2>
-
-        </div>
-
-        <div className="bg-white p-5 rounded-xl shadow">
-
-          <p className="text-gray-500">Categories</p>
-
-          <h2 className="text-3xl font-bold">
-            4
-          </h2>
-
-        </div>
-
-        <div className="bg-white p-5 rounded-xl shadow">
-
+        <div className="bg-white rounded-xl shadow-md p-6">
           <p className="text-gray-500">In Stock</p>
+          <h1 className="text-4xl font-bold text-green-600 mt-3">220</h1>
+        </div>
 
-          <h2 className="text-3xl font-bold text-green-600">
-            {products.filter((p) => p.stock > 0).length}
-          </h2>
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <p className="text-gray-500">Low Stock</p>
+          <h1 className="text-4xl font-bold text-orange-500 mt-3">20</h1>
+        </div>
 
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <p className="text-gray-500">Out of Stock</p>
+          <h1 className="text-4xl font-bold text-red-600 mt-3">10</h1>
         </div>
 
       </div>
@@ -135,28 +91,21 @@ export default function Inventory() {
 
       <div className="flex justify-between items-center mb-6">
 
-        <div className="relative w-80">
+        <input
+          type="text"
+          placeholder="Search Product..."
+          className="border border-gray-300 rounded-lg px-4 py-3 w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
 
-          <Search
-            size={18}
-            className="absolute left-3 top-3 text-gray-400"
-          />
-
-          <input
-            type="text"
-            placeholder="Search Product..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white"
-          />
-
-        </div>
+        <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+          Search
+        </button>
 
       </div>
 
-      {/* Product Table */}
+      {/* Table */}
 
-      <div className="bg-white rounded-xl shadow overflow-hidden">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden">
 
         <table className="w-full">
 
@@ -164,17 +113,13 @@ export default function Inventory() {
 
             <tr>
 
-              <th className="p-4 text-left">Product</th>
-
-              <th className="text-left">Category</th>
-
-              <th className="text-left">Stock</th>
-
-              <th className="text-left">Price</th>
-
-              <th className="text-left">Status</th>
-
-              <th className="text-center">Action</th>
+              <th className="p-4">ID</th>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Action</th>
 
             </tr>
 
@@ -182,60 +127,48 @@ export default function Inventory() {
 
           <tbody>
 
-            {filteredProducts.map((product) => (
+            {products.map((product) => (
 
               <tr
                 key={product.id}
-                className="border-b hover:bg-gray-50"
+                className="text-center border-b hover:bg-gray-50"
               >
 
-                <td className="p-4 font-semibold">
-                  {product.name}
-                </td>
+                <td className="p-4">{product.id}</td>
 
-                <td>
-                  {product.category}
-                </td>
+                <td>{product.name}</td>
 
-                <td>
-                  {product.stock}
-                </td>
+                <td>{product.category}</td>
 
-                <td>
-                  ₹ {product.price}
-                </td>
+                <td>₹{product.price}</td>
+
+                <td>{product.stock}</td>
 
                 <td>
 
-                  {product.stock < 20 ? (
-
-                    <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
-                      Low Stock
-                    </span>
-
-                  ) : (
-
-                    <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
-                      Available
-                    </span>
-
-                  )}
+                  <span
+                    className={`px-3 py-1 rounded-full text-white text-sm ${
+                      product.status === "In Stock"
+                        ? "bg-green-500"
+                        : product.status === "Low Stock"
+                        ? "bg-orange-500"
+                        : "bg-red-500"
+                    }`}
+                  >
+                    {product.status}
+                  </span>
 
                 </td>
 
                 <td>
 
-                  <div className="flex justify-center gap-3">
+                  <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded mr-2">
+                    Edit
+                  </button>
 
-                    <button className="bg-yellow-400 hover:bg-yellow-500 p-2 rounded-lg text-white">
-                      <Edit size={18} />
-                    </button>
-
-                    <button className="bg-red-500 hover:bg-red-600 p-2 rounded-lg text-white">
-                      <Trash2 size={18} />
-                    </button>
-
-                  </div>
+                  <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
+                    Delete
+                  </button>
 
                 </td>
 
