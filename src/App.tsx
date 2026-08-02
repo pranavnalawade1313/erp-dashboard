@@ -14,22 +14,37 @@ import Offers from "./pages/Offers";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 
+
 function App() {
   return (
     <Routes>
+
       <Route path="/" element={<Dashboard />} />
+
       <Route path="/pos" element={<POS />} />
+
       <Route path="/inventory" element={<Inventory />} />
+
       <Route path="/sales" element={<Sales />} />
+
       <Route path="/purchase" element={<Purchase />} />
+
       <Route path="/customers" element={<Customers />} />
+
       <Route path="/suppliers" element={<Suppliers />} />
+
       <Route path="/employees" element={<Employees />} />
+
       <Route path="/finance" element={<Finance />} />
+
       <Route path="/reports" element={<Reports />} />
+
       <Route path="/offers" element={<Offers />} />
+
       <Route path="/notifications" element={<Notifications />} />
+
       <Route path="/settings" element={<Settings />} />
+
     </Routes>
   );
 }
